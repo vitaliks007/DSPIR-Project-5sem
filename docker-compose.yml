@@ -25,3 +25,8 @@ services:
       - ./src:/var/www/html
     depends_on:
       - db
+  proxy:
+    image: nginx:1.11
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./static:/data/static/
