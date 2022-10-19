@@ -19,14 +19,14 @@ services:
     image: web
     container_name: web
     build: ./web
-    ports:
-      - 8000:80
     volumes:
-      - ./src:/var/www/html
+      - ./src/dynamic:/var/www/html
     depends_on:
       - db
   proxy:
     image: nginx:1.11
+    ports:
+      - 8000:80
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./static:/data/static/
+      - ./src/static:/data/static/

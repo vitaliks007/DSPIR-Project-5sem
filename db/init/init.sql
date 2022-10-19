@@ -4,39 +4,53 @@ GRANT SELECT,UPDATE,INSERT ON appDB.* TO 'user'@'%';
 FLUSH PRIVILEGES;
 
 USE appDB;
+
+CREATE TABLE IF NOT EXISTS weather (
+  city VARCHAR(45) NOT NULL,
+  temperature INT NULL,
+  ID INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (id)
+  );
+
 CREATE TABLE IF NOT EXISTS users (
-  ID INT(11) NOT NULL AUTO_INCREMENT,
-  name VARCHAR(20) NOT NULL,
-  surname VARCHAR(40) NOT NULL,
-  PRIMARY KEY (ID)
-);
+  login VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
+  ID INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (id)
+  );
 
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Alex', 'Rover') AS tmp
+INSERT INTO users (login, password)
+SELECT * FROM (SELECT 'admin', 'password') AS tmp
 WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Alex' AND surname = 'Rover'
+    SELECT login FROM users WHERE login = 'admin' AND password = 'password'
 ) LIMIT 1;
 
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Bob', 'Marley') AS tmp
+INSERT INTO weather (city, temperature)
+SELECT * FROM (SELECT 'Moscow', 0) AS tmp
 WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Bob' AND surname = 'Marley'
+    SELECT city FROM weather WHERE city = 'Moscow' AND temperature = 0
 ) LIMIT 1;
 
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Alex', 'Rover') AS tmp
+INSERT INTO weather (city, temperature)
+SELECT * FROM (SELECT 'Saint-Petersburg', 0) AS tmp
 WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Alex' AND surname = 'Rover'
+    SELECT city FROM weather WHERE city = 'Saint-Petersburg' AND temperature = 0
 ) LIMIT 1;
 
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Kate', 'Yandson') AS tmp
+INSERT INTO weather (city, temperature)
+SELECT * FROM (SELECT 'Omsk', 0) AS tmp
 WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Kate' AND surname = 'Yandson'
+    SELECT city FROM weather WHERE city = 'Omsk' AND temperature = 0
 ) LIMIT 1;
 
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Lilo', 'Black') AS tmp
+INSERT INTO weather (city, temperature)
+SELECT * FROM (SELECT 'Voronezh', 0) AS tmp
 WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Lilo' AND surname = 'Black'
+    SELECT city FROM weather WHERE city = 'Voronezh' AND temperature = 0
+) LIMIT 1;
+
+INSERT INTO weather (city, temperature)
+SELECT * FROM (SELECT 'Saratov', 0) AS tmp
+WHERE NOT EXISTS (
+    SELECT city FROM weather WHERE city = 'Saratov' AND temperature = 0
 ) LIMIT 1;
