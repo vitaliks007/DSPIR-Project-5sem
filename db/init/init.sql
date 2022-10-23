@@ -26,15 +26,15 @@ WHERE NOT EXISTS (
 ) LIMIT 1;
 
 INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Moscow', 0) AS tmp
+SELECT * FROM (SELECT 'Moscow', 8) AS tmp
 WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Moscow' AND temperature = 0
+    SELECT city FROM weather WHERE city = 'Moscow' AND temperature = 8
 ) LIMIT 1;
 
 INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Saint-Petersburg', 0) AS tmp
+SELECT * FROM (SELECT 'Saint-Petersburg', 6) AS tmp
 WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Saint-Petersburg' AND temperature = 0
+    SELECT city FROM weather WHERE city = 'Saint-Petersburg' AND temperature = 6
 ) LIMIT 1;
 
 INSERT INTO weather (city, temperature)
@@ -44,13 +44,13 @@ WHERE NOT EXISTS (
 ) LIMIT 1;
 
 INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Voronezh', 0) AS tmp
+SELECT * FROM (SELECT 'Voronezh', 9) AS tmp
 WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Voronezh' AND temperature = 0
+    SELECT city FROM weather WHERE city = 'Voronezh' AND temperature = 9
 ) LIMIT 1;
 
 INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Saratov', 0) AS tmp
+SELECT * FROM (SELECT 'Saratov', 6) AS tmp
 WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Saratov' AND temperature = 0
+    SELECT city FROM weather WHERE city = 'Saratov' AND temperature = 6
 ) LIMIT 1;
