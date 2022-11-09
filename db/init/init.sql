@@ -5,12 +5,22 @@ FLUSH PRIVILEGES;
 
 USE appDB;
 
-CREATE TABLE IF NOT EXISTS weather (
-  city VARCHAR(45) NOT NULL,
-  temperature INT NULL,
+CREATE TABLE IF NOT EXISTS cities (
+  city_name VARCHAR(45) NULL,
+  city_name_rus VARCHAR(45) NULL,
   ID INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (id)
-  );
+  PRIMARY KEY (id));
+
+CREATE TABLE IF NOT EXISTS temperatures (
+  temperature INT NULL,
+  city_id INT NOT NULL,
+  PRIMARY KEY (city_id),
+  INDEX fk_temperatures_cities_idx (city_id ASC) VISIBLE,
+  CONSTRAINT fk_temperatures_cities
+    FOREIGN KEY (city_id)
+    REFERENCES cities (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS users (
   login VARCHAR(45) NOT NULL,
@@ -23,34 +33,4 @@ INSERT INTO users (login, password)
 SELECT * FROM (SELECT 'admin', 'password') AS tmp
 WHERE NOT EXISTS (
     SELECT login FROM users WHERE login = 'admin' AND password = 'password'
-) LIMIT 1;
-
-INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Moscow', 8) AS tmp
-WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Moscow' AND temperature = 8
-) LIMIT 1;
-
-INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Saint-Petersburg', 6) AS tmp
-WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Saint-Petersburg' AND temperature = 6
-) LIMIT 1;
-
-INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Omsk', 0) AS tmp
-WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Omsk' AND temperature = 0
-) LIMIT 1;
-
-INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Voronezh', 9) AS tmp
-WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Voronezh' AND temperature = 9
-) LIMIT 1;
-
-INSERT INTO weather (city, temperature)
-SELECT * FROM (SELECT 'Saratov', 6) AS tmp
-WHERE NOT EXISTS (
-    SELECT city FROM weather WHERE city = 'Saratov' AND temperature = 6
 ) LIMIT 1;
