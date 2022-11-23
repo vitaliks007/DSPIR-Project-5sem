@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+}
+
+* {
+    color: white;
+}
+
+input {
+    background-color: gray;
+}
+
+option {
+    background-color: gray;
+}
+
+select {
+    background-color: gray;
+}

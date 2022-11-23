@@ -21,6 +21,7 @@ services:
     build: ./web
     volumes:
       - ./src/dynamic:/var/www/html
+      - ./src/static/files:/var/www/files/
     depends_on:
       - db
   proxy:
@@ -30,3 +31,21 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./src/static:/data/static/
+  redis:
+    image: redis
+    volumes:
+      - .redis/sessions/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379"
+  redis-files:
+    image: redis
+    volumes:
+      - .redis/files/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379"
+  delete_files:
+    image: ubuntu:latest
+    volumes: 
+      - ./src/static/files:/var/files/
+    command: "find /var/files/ -mmin +30 -delete"
+    restart: always
