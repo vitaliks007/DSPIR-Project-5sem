@@ -1,0 +1,7 @@
+Dump:
+    dump{0..59}:
+      temperature: '<randomFloat(1, -10, 20)>'
+      wind: '<randomFloat(2, 0, 20)>'
+      pressure: '<numberBetween(950, 1050)>'
+      humidity: '<numberBetween(15, 50)>'
+      visibility: '<randomFloat(1, 0.1, 10)>'
