@@ -12,6 +12,6 @@ class Dump {
 
 
 $loader = new Nelmio\Alice\Loader\NativeLoader();
-$fixtures = $loader->loadFile('resources/fixtures.yml');
+$fixtures = $loader->loadFile('/var/www/resources/fixtures.yml');
 
 ?>

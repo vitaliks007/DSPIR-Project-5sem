@@ -1,0 +1,6 @@
+{
+    "require": {
+        "nelmio/alice": "^3.10",
+        "szymach/c-pchart": "^3.0"
+    }
+}

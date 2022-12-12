@@ -1,7 +1,7 @@
 <?php
     function drawImage($image) {
         $filename1 = "example.createFunctionSerie.scatter.png";
-        $filename_logo = "resources/logo.png";
+        $filename_logo = "/var/www/resources/logo.png";
 
         $image->render($filename1);
 

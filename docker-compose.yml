@@ -22,6 +22,7 @@ services:
     volumes:
       - ./src/dynamic:/var/www/html
       - ./src/static/files:/var/www/files/
+      - ./src/static/resources:/var/www/resources/
     depends_on:
       - db
   proxy:
